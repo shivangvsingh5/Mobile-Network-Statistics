@@ -14,7 +14,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-////////////////////////////EE 289 Project 1 Template///////////////////
+////////////////////////////EE 286 Project 1 Template///////////////////
 
 #include "ns3/core-module.h"
 #include "ns3/point-to-point-module.h"
@@ -47,13 +47,13 @@ int main (int argc, char *argv[])
   cmd.Parse (argc, argv);
 
 
-/////Create Nodes
+///// Create Nodes
 
   NodeContainer nodes;
   nodes.Create (n);      
 
 
-/////Preapare WiFi Channel
+///// Preapare WiFi Channel
   WifiHelper wifi;
 
   wifi.SetStandard (WIFI_PHY_STANDARD_80211b);
@@ -74,16 +74,16 @@ int main (int argc, char *argv[])
                                 "DataMode",StringValue ("DsssRate2Mbps"),
                                 "ControlMode",StringValue ("DsssRate1Mbps"));
 
-/////Fragmentation and RTS/CTS properties
+///// Fragmentation and RTS/CTS properties
   Config::SetDefault ("ns3::WifiRemoteStationManager::FragmentationThreshold", StringValue ("2200"));
   Config::SetDefault ("ns3::WifiRemoteStationManager::RtsCtsThreshold", StringValue ("2200"));
   
 
-/////Set it to adhoc mode
+///// Set it to adhoc mode
   WifiMacHelper wifiMac;
 
 
-/////Add the sensing of traffic
+///// Add the sensing of traffic
   wifiMac.SetType ("ns3::AdhocWifiMac");
   NetDeviceContainer devices = wifi.Install (wifiPhy, wifiMac, nodes);
   MobilityHelper mobility;
@@ -99,14 +99,14 @@ int main (int argc, char *argv[])
   
 
 
-////////////////////////Random Rectangle Location Model/////////////////////////////////
+//////////////////////// Random Rectangle Location Model /////////////////////////////////
   /*mobility.SetPositionAllocator ("ns3::RandomRectanglePositionAllocator",
                                 "X", StringValue ("ns3::UniformRandomVariable[Min=0|Max=500]"),
                                 "Y", StringValue ("ns3::UniformRandomVariable[Min=0|Max=500]"));
 
   */
 
-////////////////////////Random Disc Location Model/////////////////////////////////
+//////////////////////// Random Disc Location Model /////////////////////////////////
 /* mobility.SetPositionAllocator ("ns3::RandomDiscPositionAllocator",
                                 "X", StringValue ("500"),
                                 "Y", StringValue ("500"),
@@ -119,7 +119,7 @@ int main (int argc, char *argv[])
  
   mobility.Install (nodes);
 
-////////////////////Adding mobility model to the receiver and putting it in the center in the disc model//////
+//////////////////// Adding mobility model to the receiver and putting it in the center in the disc model//////
 /*  MobilityHelper mobility_Rx;
   Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
   positionAlloc->Add (Vector (500.0, 500.0, 0.0));
@@ -129,7 +129,7 @@ int main (int argc, char *argv[])
 */
 
 
-/////Adding IP Stack
+///// Adding IP Stack
  
   InternetStackHelper internet;
   internet.Install (nodes);
@@ -140,7 +140,7 @@ int main (int argc, char *argv[])
   
 
 
-/////Adding Applications
+///// Adding Applications
   UdpServerHelper myServer (45);
   ApplicationContainer serverApp = myServer.Install (nodes.Get (n/2));
   serverApp.Start(Seconds(0.0));
@@ -164,7 +164,7 @@ int main (int argc, char *argv[])
         }
   }
 
-/////Adding initial application to avoid problems with ARP collisions
+///// Adding initial application to avoid problems with ARP collisions
   uint16_t  echoPort = 9;
   UdpEchoClientHelper echoClientHelper (i.GetAddress (n/2), echoPort);
   echoClientHelper.SetAttribute ("MaxPackets", UintegerValue (1));
@@ -185,13 +185,13 @@ int main (int argc, char *argv[])
   wifiPhy.EnablePcap ("project1a", devices);
 
 
-/////Setup Simulator  
+///// Setup Simulator  
   Simulator::Stop (Seconds (20.0));
 
   Simulator::Run ();
   Simulator::Destroy ();
 
-/////Count number of packets received
+///// Count number of packets received
   uint32_t totalPacketsThrough = DynamicCast<UdpServer> (serverApp.Get (0))->GetReceived ();
 
   std::cout << "Total Packets Received: " << totalPacketsThrough << '\n';
