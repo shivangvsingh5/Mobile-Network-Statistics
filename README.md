@@ -6,7 +6,7 @@ In my this project, I have worked using NS-3 Network Simulator. I have done 5 ta
 
 2. **Three-Node Network** : In this part, we have increased the number of nodes in the network by one. From this point we have also started visulaizing the simulations for getting a better understanding of what is going on inside the network.
 
-3. **Increasing th distance** : We have increased the distance between the transmitters and the receivers and thus also increasing the distance between the transmitters. Also, I have analyzed why the number of packets decreased after increasing the number of nodes and with the increment in the distance, packet loss due to collisions has increased and also taht the sender is uanble to sense the packet transfer going on in the network, due to which number of packets decreased.
+3. **Increasing the distance** : We have increased the distance between the transmitters and the receivers and thus also increasing the distance between the transmitters. Also, I have analyzed why the number of packets decreased after increasing the number of nodes and with the increment in the distance, packet loss due to collisions has increased and also that the sender is uanble to sense the packet transfer going on in the network, due to which number of packets decreased.
 
 4. **RTS/CTS Enabling** : We have enabled RTS/CTS at this step, by changing the code in C++ file. By enabling RTS/CTS, the number of packets increase, because it reduces the frame collison among hidden stations. Once we enable the RTS/CTS, it stops sender from sending a data frame until it completes a RTS/CTS handshaking with the other station. 
 
