@@ -60,7 +60,7 @@ int main (int argc, char *argv[])
 
   YansWifiPhyHelper wifiPhy =  YansWifiPhyHelper::Default ();
   wifiPhy.Set ("EnergyDetectionThreshold", DoubleValue (-80) );      
-  wifiPhy.Set ("CcaMode1Threshold", DoubleValue(-81));               //receiving packets at -80 in the distance of 360, but not at 370
+  wifiPhy.Set ("CcaMode1Threshold", DoubleValue(-81));                 
   
 
   YansWifiChannelHelper wifiChannel;
