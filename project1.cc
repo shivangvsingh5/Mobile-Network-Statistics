@@ -47,13 +47,12 @@ int main (int argc, char *argv[])
   cmd.Parse (argc, argv);
 
 
-///// Create Nodes
+///// Creating Nodes
 
   NodeContainer nodes;
   nodes.Create (n);      
 
-
-///// Preapare WiFi Channel
+///// Preaparing WiFi Channel
   WifiHelper wifi;
 
   wifi.SetStandard (WIFI_PHY_STANDARD_80211b);
