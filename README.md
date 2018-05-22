@@ -1,6 +1,6 @@
 # Mobile Network Statistics
 
-In my this project, I have worked using NS-3 Network Simulator. I have done 5 tasks in this project to see and understand the simulation in several conditions. In all the conditions I have calculated the Throughput separately too. Those conditions are discussed as below - 
+In my this project, I have worked using **NS-3 Network Simulator**. I have done 5 tasks in this project to see and understand the simulation in several conditions. In all the conditions I have calculated the Throughput separately too. Those conditions are discussed as below - 
 
 1. **Point-to-Point Communication** : This is the most basic and starting simulation technique to see the transmission of data between two nodes; calculating the total number of packets received by the reciever in the network.
 
